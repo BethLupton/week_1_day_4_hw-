@@ -12,22 +12,23 @@ tasks = [
 
 
 def get_uncompleted_tasks(list):
-    incomplete_tasks = []
-    for task in list:
-        if task["completed"] == False:
-            incomplete_tasks.append(task)
-    return incomplete_tasks
+    # incomplete_tasks = []
+    # for task in list:
+    #     if task["completed"] == False:
+    #         incomplete_tasks.append(task)
+    # return incomplete_tasks
+    return get_tasks_by_status(list, False)
 
 # Get a list of completed tasks
 
 
 def get_completed_tasks(list):
-    complete_tasks = []
-    for task in list:
-        if task["completed"] == True:
-            complete_tasks.append(task)
-    return complete_tasks
-
+    # complete_tasks = []
+    # for task in list:
+    #     if task["completed"] == True:
+    #         complete_tasks.append(task)
+    # return complete_tasks
+    return get_tasks_by_status(list, True)
 # Get tasks where time_taken is at least a given time
 
 
@@ -56,7 +57,11 @@ def get_task_with_description(list, description):
 
 
 def get_tasks_by_status(list, status):
-    pass
+    tasks_status = []
+    for task in list:
+        if task["completed"] == status:
+            tasks_status.append(task)
+    return tasks_status
 
 
 def mark_task_complete(task):
