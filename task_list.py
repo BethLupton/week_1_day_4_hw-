@@ -1,39 +1,67 @@
 tasks = [
-    { "description": "Wash Dishes", "completed": False, "time_taken": 10 },
-    { "description": "Clean Windows", "completed": False, "time_taken": 15 },
-    { "description": "Make Dinner", "completed": True, "time_taken": 30 },
-    { "description": "Feed Cat", "completed": False, "time_taken": 5 },
-    { "description": "Walk Dog", "completed": True, "time_taken": 60 },
+    {"description": "Wash Dishes", "completed": False, "time_taken": 10},
+    {"description": "Clean Windows", "completed": False, "time_taken": 15},
+    {"description": "Make Dinner", "completed": True, "time_taken": 30},
+    {"description": "Feed Cat", "completed": False, "time_taken": 5},
+    {"description": "Walk Dog", "completed": True, "time_taken": 60},
 ]
 
 # Functions to complete:
 
-## Get a list of uncompleted tasks
-def get_uncompleted_tasks(task):
-    tasks = [False]
-    return tasks[task]
-    pass
+# Get a list of uncompleted tasks
 
-## Get a list of completed tasks
+
+def get_uncompleted_tasks(list):
+    incomplete_tasks = []
+    for task in list:
+        if task["completed"] == False:
+            incomplete_tasks.append(task)
+    return incomplete_tasks
+
+# Get a list of completed tasks
+
+
 def get_completed_tasks(list):
-    pass
+    complete_tasks = []
+    for task in list:
+        if task["completed"] == True:
+            complete_tasks.append(task)
+    return complete_tasks
 
-## Get tasks where time_taken is at least a given time
+# Get tasks where time_taken is at least a given time
+
+
 def get_tasks_taking_at_least(list, time):
-    pass
+    tasks_time = []
+    for task in list:
+        if task["time_taken"] >= time:
+            tasks_time.append(task)
+    return tasks_time
 
-## Find a task with a given description
+    # for tasks_time in list:
+    #     if tasks_time["time_taken"] == time:
+    #         return tasks_time
+
+
 def get_task_with_description(list, description):
-    pass
+    tasks_description = []
+    for task in list:
+        if task["description"] == description:
+            tasks_description.append(task)
+    return tasks_description
 
-# Extention (Function): 
+# Extention (Function):
 
-## Get a list of tasks by status
+# Get a list of tasks by status
+
+
 def get_tasks_by_status(list, status):
     pass
 
+
 def mark_task_complete(task):
     task["completed"] = True
+
 
 def create_task(description, time_taken):
     task = {}
@@ -43,17 +71,21 @@ def create_task(description, time_taken):
 
     return task
 
+
 def add_to_list(list, task):
     list.append(task)
+
 
 def print_task(task):
     print(f'Description: { task["description"] }')
     print(f'Status: { "Completed" if task["completed"] else "Incomplete"}')
     print(f'Time Taken: {task["time_taken"]} mins')
 
+
 def print_list(list):
     for task in list:
         print_task(task)
+
 
 def print_menu():
     print("Options:")
@@ -67,9 +99,11 @@ def print_menu():
     print("M or m: Display this menu")
     print("Q or q: Quit")
 
+
 while (True):
     print_menu()
-    option = input("Select an option 1, 2, 3, 4, 5, display (m)enu or (q)uit: ")
+    option = input(
+        "Select an option 1, 2, 3, 4, 5, display (m)enu or (q)uit: ")
     if (option.lower() == 'q'):
         break
     if option == '1':
